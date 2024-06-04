@@ -4,13 +4,8 @@ from selenium.webdriver.common.by import By
 from time import sleep
 import urllib
 from webdriver_manager.chrome import ChromeDriverManager
-import requests
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 from time import sleep
-import urllib
 from urllib.parse import urlparse, parse_qs
-from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 import datetime
 import csv
@@ -177,7 +172,7 @@ else: #キャンセル発生時の処理
     
     connection_config={"user":user,"password":password,"host":host,"port":port,"database":base}
     engine=create_engine('postgresql://{user}:{password}@{host}:{port}/{database}'.format(**connection_config))
-    connection=psycopg2.connect( host="127.0.0.1",user="postgres",password="0223",port="5432",database="postgres" )
+    connection=psycopg2.connect( host="host",user="user",password="password",port="port",database="database" )
     cursor=connection.cursor()
     for d,a,y,s,h,b,w in zip(add_day,add_day,add_time,add_week,canceltime,before,weathers): #データテーブルに新しいキャンセル日の情報を追加
         cursor.execute("INSERT INTO test_table01(日時,日付,時間,曜日,発生時間帯,時間差,天気) values(%s,%s,%s,%s,%s,%s,%s)",(d,a,y,s,h,b,w))
